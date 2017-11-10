@@ -11,5 +11,10 @@
 |
 */
 
-Route::get('/', 'SiteController@index');
+Route::any('/', 'SiteController@index');
 Route::any('form/{id?}', 'RepairController@form');
+Route::get('loginForm', 'SiteController@loginForm');
+Route::post('login', 'SiteController@login');
+Route::get('logout', 'SiteController@logout');
+Route::any('daySearch', 'SiteController@daySearch');
+Route::any('Report', 'ReportController@report');

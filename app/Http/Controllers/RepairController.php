@@ -27,7 +27,15 @@ class RepairController extends Controller
       $repair->lastname = $request->get('lastname');
       $repair->type_id = $request->get('type_id');
       $repair->problem_detail = $request->get('problem_detail');
-      $repair->status_id = "4";
+      $repair->problem_fix = $request->get('problem_fix');
+      $repair->user_fix = $request->get('user_fix');
+      $repair->comment = $request->get('comment');
+      if(empty($request->get('status_id'))){
+        $repair->status_id = "4";
+      }else{
+        $repair->status_id = $request->get('status_id');
+      }
+
       if($repair->save()){
         return Redirect('/');
       }

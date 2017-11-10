@@ -1,4 +1,4 @@
-<?php $user = Session::get('user');?>
+<?php  $user = Session::get('user');?>
 @extends('layouts.template')
 @section('content')
 <center><h4>แบบฟอร์มแจ้งซ่อม</h4></center>
@@ -35,6 +35,7 @@
       {!! Form::hidden('status', $repair->status, array('class' => 'form-control')) !!}
     </td>
   </tr>
+  @if(!empty($user) && $user[0]->permition == 0)
   <tr>
     <td>
       {!! Form::label('status', 'สถานะการซ่อม', array('class'=>'control-label')) !!}
@@ -61,11 +62,12 @@
       {!! Form::text('comment',$repair->comment, array('class' => 'form-control')) !!}
     </td>
   </tr>
+  @endif
 </table>
 
 <div class="form-action" align="center">
   {!! Form::submit('บันทึกข้อมูล', array('class'=>'btn btn-success')) !!}
-  {!! Html::link('general', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
+  {!! Html::link('/', 'ยกเลิก', array('class'=>'btn btn-primary')) !!}
 </div>
 {!! Form::close( ) !!}
 @stop
